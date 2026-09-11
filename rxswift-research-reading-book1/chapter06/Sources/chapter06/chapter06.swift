@@ -5,7 +5,19 @@ import Foundation
 @main
 public struct Chapter06 {
 
-    public static func main() {
+/// 遅延中に次の入力が届いた場合、古い出力を破棄する比較用のストリーム。
+static func latestValues(_ input: Observable<Int>, delay: RxTimeInterval, scheduler: SchedulerType) -> Observable<Int> {
+    input.flatMapLatest { Observable.just($0).delay(delay, scheduler: scheduler) }
+}
+
+public static func main() {
+    let subscriptions = DisposeBag()
+    let clock = HistoricalScheduler(initialClock: Date(timeIntervalSince1970: 0))
+    latestValues(.of(1, 2), delay: .seconds(1), scheduler: clock)
+        .subscribe(onNext: { print("latest: \($0)") })
+        .disposed(by: subscriptions)
+    clock.start()
+
         // combineLatest()
         /*
          【注目点】
@@ -18,10 +30,11 @@ public struct Chapter06 {
         let password = PublishSubject<String>()
         let repeatedPassword = PublishSubject<String>()
 
-        _ = Observable.combineLatest(password, repeatedPassword) { "\($0), \($1)" }
+        Observable.combineLatest(password, repeatedPassword) { "\($0), \($1)" }
             .subscribe(onNext: {
                 print("onNext: \($0)")
             })
+            .disposed(by: subscriptions)
 
         password.onNext("a")
         password.onNext("ab")
@@ -46,10 +59,11 @@ public struct Chapter06 {
         let intSubject = PublishSubject<Int>()
         let stringSubject = PublishSubject<String>()
 
-        _ = Observable.zip(intSubject, stringSubject) {"\($0) \($1)"}
+        Observable.zip(intSubject, stringSubject) {"\($0) \($1)"}
             .subscribe(onNext: {
                 print($0)
             })
+            .disposed(by: subscriptions)
 
         intSubject.onNext(1)
         intSubject.onNext(2)

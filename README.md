@@ -38,6 +38,16 @@ swift Scripts/verify.swift --index 0
 
 `Quality` ワークフローは上記と同じ一覧・スクリプトを使い、対象ごとにビルドまたはテストを実行します。ビルドの成功だけでは、画面表示、アクセシビリティ、通信先の動作、テスト網羅性は保証されません。UIサンプルはSimulator上での操作確認も必要です。
 
+## 振る舞いの回帰テスト
+
+第1巻Chapter06のflatMapLatest例は、遅延とSchedulerを注入したlatestValuesで実行します。実行例も仮想時刻を使い、購読の所有元をDisposeBagで明示します。
+
+新しい入力による古い遅延結果の破棄、購読解除、入力ストリームのエラーによる終了を、実時間の待機なしで検証します。
+
+```sh
+swift test --package-path rxswift-research-reading-book1/chapter06
+```
+
 ## Swiftコード品質
 
 [設計・命名・所有関係の方針と、この教材への適用範囲](SWIFT-QUALITY.md)を参照してください。
