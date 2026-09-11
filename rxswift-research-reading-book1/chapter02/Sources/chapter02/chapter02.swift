@@ -45,7 +45,7 @@ public struct Chapter02 {
 
          // Rx/RxSwift/Observables/Map.swift
          extension ObservableType {
-            public func map<R>(_ transform: @escaping (Self.E) throws -> R) -> RxSwift.Obsrevable<R>
+            public func map<R>(_ transform: @escaping (Self.E) throws -> R) -> RxSwift.Observable<R>
          }
 
          ※ Rについては、クロージャの戻り値およびmap自体の戻り値によって決定

@@ -187,7 +187,7 @@ public struct Chapter03 {
          オプショナルの必要がなくなることで、ControlProperty<String?>から
          オプショナルではないControlProperty<String>に変換していた
 
-         最後にasObsrevable()メソッドによってControlProperty<String>を
+         最後にasObservable()メソッドによってControlProperty<String>を
          Observable<String>に変換すれば、UITextFieldからストリームの取得が完了
          */
     }

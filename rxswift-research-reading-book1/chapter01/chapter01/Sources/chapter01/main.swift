@@ -2,7 +2,7 @@ import RxSwift
 
 /*
  -R-Rx-RxS-RxSw-RxSwi-RxSwif-RxSwift
- ※ fileter{ $0.count >= 2}を適用
+ ※ filter{ $0.count >= 2}を適用
  ※ ストリームの矢印にあるイベントに対して、オペレータfilterを適用した下のストリームの矢印
  -Rx-RxS-RxSw-RxSwi-RxSwif-RxSwift
 
@@ -11,7 +11,7 @@ import RxSwift
  
  mapメソッドは、RxSwiftでは以下のようにインタフェースが定義
  
- extention ObservableType {
+ extension ObservableType {
     public func map(_ transform: @escaping(Self.E)throws -> R) -> RxSwift.Observable<R>
  }
  */
@@ -34,7 +34,7 @@ _ = observable
 /*
  -R-Rx-RxS-RxSw-RxSwi-RxSwif-RxSwift
  
- ※ fileter{ $0.count >= 2}を適用
+ ※ filter{ $0.count >= 2}を適用
  ※ ストリームの矢印にあるイベントに対して、オペレータfilterを適用した下のストリームの矢印
  -Rx-RxS-RxSw-RxSwi-RxSwif-RxSwift
  
@@ -90,7 +90,7 @@ _ = observable
  
  経過時間という条件を考慮したコードを書くために、RxSwiftでは「debounce」というオペレータが用意されている
 
- extention ObservableType {
+ extension ObservableType {
     public func debounce(_ dueTime: RxTimeInterval, scheduler: SchedulerType) -> Observable<Element> {
         return Debounce(source: self.asObservable(), dueTime: dueTime, scheduler: scheduler)
     }
@@ -159,7 +159,7 @@ _ = observable
 
 /*
  はじまりのMVVM（始祖のMVVM）
- MVVMは、2005年にMicrosoftにより.NET FrameworkのWindows Presentation Foudation（WPF）におけるGUIアーキテクチャパターンとして提唱された
+ MVVMは、2005年にMicrosoftにより.NET FrameworkのWindows Presentation Foundation（WPF）におけるGUIアーキテクチャパターンとして提唱された
  WPFでは、XAMLというXMLベースの言語をViewテンプレートとし、そのViewにModelの値をバインドする仕組みとしてViewModelという考え方が採用された
  このViewModelでは、GoFのコマンドデザインパターンにより、Viewからのユーザ入力とその結果を抽象化してやりとりすることで依存関係をなくしている
     - (ex)
