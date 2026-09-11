@@ -1,0 +1,32 @@
+[
+  {
+    "kind": "package",
+    "name": "rxswift-research-reading-book1/chapter01/chapter01",
+    "path": "rxswift-research-reading-book1/chapter01/chapter01"
+  },
+  {
+    "kind": "package",
+    "name": "rxswift-research-reading-book1/chapter02",
+    "path": "rxswift-research-reading-book1/chapter02"
+  },
+  {
+    "kind": "package",
+    "name": "rxswift-research-reading-book1/chapter03/chapter03",
+    "path": "rxswift-research-reading-book1/chapter03/chapter03"
+  },
+  {
+    "kind": "package",
+    "name": "rxswift-research-reading-book1/chapter04/demo",
+    "path": "rxswift-research-reading-book1/chapter04/demo"
+  },
+  {
+    "kind": "package",
+    "name": "rxswift-research-reading-book1/chapter06",
+    "path": "rxswift-research-reading-book1/chapter06"
+  },
+  {
+    "kind": "package",
+    "name": "rxswift-research-reading-book2/chapter01",
+    "path": "rxswift-research-reading-book2/chapter01"
+  }
+]

@@ -2,7 +2,7 @@ import XCTest
 import class Foundation.Bundle
 
 final class chapter01Tests: XCTestCase {
-    func testExample() throws {
+    func testFilteredAndLowercasedSubscriptions() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
@@ -29,7 +29,14 @@ final class chapter01Tests: XCTestCase {
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
         let output = String(data: data, encoding: .utf8)
 
-        XCTAssertEqual(output, "Hello, world!\n")
+        XCTAssertEqual(process.terminationStatus, 0)
+        let lines = try XCTUnwrap(output).split(separator: "\n").map(String.init)
+        XCTAssertEqual(lines, [
+            "onNext:  Rx", "onNext:  RxS", "onNext:  RxSw",
+            "onNext:  RxSwi", "onNext:  RxSwif", "onNext:  RxSwift",
+            "onNext:  rx", "onNext:  rxs", "onNext:  rxsw",
+            "onNext:  rxswi", "onNext:  rxswif", "onNext:  rxswift",
+        ])
         #endif
     }
 
